@@ -35,12 +35,12 @@ export async function middleware(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
   const path = request.nextUrl.pathname
 
-  // Protect Admin and Account routes, ignoring login/register pages
-  const isProtectedPath = path.startsWith('/admin') || 
-                         (path.startsWith('/account') && !path.includes('/login') && !path.includes('/register'))
+  // Cleaned up: Protect Admin and Account routes
+  const isProtectedPath = path.startsWith('/admin') || path.startsWith('/account')
 
   if (isProtectedPath && !user) {
-    return NextResponse.redirect(new URL('/account/login', request.url))
+    // CORRECTED: Redirect to /login instead of the nonexistent /account/login
+    return NextResponse.redirect(new URL('/login', request.url))
   }
 
   return supabaseResponse
