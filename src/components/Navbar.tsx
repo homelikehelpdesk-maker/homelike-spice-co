@@ -21,12 +21,15 @@ export default function Navbar() {
         
         {/* Navigation Links */}
         <div className="flex items-center gap-2 md:gap-4">
-          <Link href="/account">
+          
+          {/* CORRECTED: My Account now points to /login */}
+          <Link href="/login">
             <Button variant="ghost" className="text-gray-600 hover:text-[#E3342F] hidden md:flex">
               My Account
             </Button>
           </Link>
           
+          {/* CORRECTED: Cart now points to /cart */}
           <Link href="/cart">
             <Button className="bg-[#E3342F] hover:bg-[#C82A26] text-white flex items-center gap-2 px-4">
               <span>Cart</span>
@@ -37,8 +40,8 @@ export default function Navbar() {
               )}
             </Button>
           </Link>
-        </div>
 
+        </div>
       </div>
     </nav>
   )
