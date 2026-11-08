@@ -1,8 +1,8 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import { logout } from '@/app/(auth)/actions'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import SignOutButton from '@/components/SignOutButton'
 
 export default async function AccountPage() {
   const supabase = await createClient()
@@ -58,9 +58,8 @@ export default async function AccountPage() {
               </Link>
             )}
 
-            <form action={logout}>
-              <Button variant="outline" type="submit">Sign Out</Button>
-            </form>
+            {/* CORRECTED: The new Client Component is now handling the sign out */}
+            <SignOutButton />
           </div>
         </div>
 
